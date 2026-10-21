@@ -1,0 +1,102 @@
+.icon {
+  width: 3rem;
+  height: 3rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+.icon * {
+  vector-effect: non-scaling-stroke;
+  transition: opacity 0.5s var(--ease), fill 0.5s var(--ease), transform 0.6s var(--ease), stroke 0.4s;
+}
+
+.faint {
+  opacity: 0.5;
+}
+
+.lit {
+  stroke: none;
+  fill: var(--golden);
+  opacity: 0;
+}
+
+.ray,
+.wave,
+.arc1,
+.arc2,
+.arc3 {
+  opacity: 0.3;
+}
+
+.dot {
+  fill: transparent;
+}
+
+.screen {
+  fill: transparent;
+}
+
+.windows {
+  fill: transparent;
+}
+
+.left,
+.right {
+  transform-box: fill-box;
+}
+
+.left {
+  transform-origin: left;
+}
+
+.right {
+  transform-origin: right;
+}
+
+/* "On" state: hover/focus on any ancestor with [data-switch], or explicit data-on */
+:global([data-switch]:hover) .icon *,
+:global([data-switch]:focus-visible) .icon *,
+.icon[data-on] * {
+  opacity: 1;
+}
+
+:global([data-switch]:hover) .icon .lit,
+:global([data-switch]:focus-visible) .icon .lit,
+.icon[data-on] .lit {
+  opacity: 0.55;
+}
+
+:global([data-switch]:hover) .icon .dot,
+:global([data-switch]:focus-visible) .icon .dot,
+.icon[data-on] .dot,
+:global([data-switch]:hover) .icon .screen,
+:global([data-switch]:focus-visible) .icon .screen,
+.icon[data-on] .screen,
+:global([data-switch]:hover) .icon .windows,
+:global([data-switch]:focus-visible) .icon .windows,
+.icon[data-on] .windows {
+  fill: var(--golden);
+}
+
+:global([data-switch]:hover) .icon .left,
+:global([data-switch]:focus-visible) .icon .left,
+.icon[data-on] .left,
+:global([data-switch]:hover) .icon .right,
+:global([data-switch]:focus-visible) .icon .right,
+.icon[data-on] .right {
+  transform: scaleX(2.2);
+}
+
+:global([data-switch]:hover) .icon .arc2,
+:global([data-switch]:focus-visible) .icon .arc2 {
+  transition-delay: 0.1s;
+}
+
+:global([data-switch]:hover) .icon .arc3,
+:global([data-switch]:focus-visible) .icon .arc3 {
+  transition-delay: 0.2s;
+}

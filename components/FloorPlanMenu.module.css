@@ -1,0 +1,220 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: var(--night);
+  color: var(--paper);
+  overflow-y: auto;
+  animation: dim 0.45s var(--ease-out);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+@keyframes dim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-h);
+  border-bottom: 1px solid rgba(251, 248, 242, 0.16);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  border: 0;
+  background: none;
+  font-weight: 500;
+}
+
+.x {
+  position: relative;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.x::before,
+.x::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+
+.x::after {
+  transform: rotate(-45deg);
+}
+
+.body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 3rem;
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.planCol {
+  grid-column: 1 / span 7;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.hint {
+  opacity: 0.75;
+  max-width: 40ch;
+}
+
+.plan {
+  width: 100%;
+  height: auto;
+  max-height: 68vh;
+}
+
+.walls {
+  fill: none;
+  stroke: rgba(251, 248, 242, 0.55);
+  stroke-width: 1.2;
+}
+
+.walls rect:first-child {
+  stroke-width: 2.5;
+  stroke: var(--paper);
+}
+
+.door {
+  stroke-dasharray: 2 3;
+}
+
+.service {
+  stroke: rgba(251, 248, 242, 0.25);
+}
+
+.hatch {
+  stroke: rgba(251, 248, 242, 0.18);
+}
+
+.zone {
+  cursor: pointer;
+  outline: none;
+}
+
+.zone path:first-child {
+  fill: rgba(233, 200, 148, 0);
+  stroke: none;
+  transition: fill 0.3s var(--ease);
+}
+
+.zone[data-room="outdoor"] path:first-child {
+  stroke: rgba(251, 248, 242, 0.35);
+  stroke-dasharray: 3 5;
+}
+
+.zone[data-room="night"] path:first-child {
+  stroke: rgba(251, 248, 242, 0.55);
+}
+
+.moon {
+  fill: var(--golden);
+}
+
+.zone text {
+  fill: var(--paper);
+  font-family: var(--font-hanken), var(--font-plex-ar), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.zone:hover path:first-child,
+.zone:focus-visible path:first-child {
+  fill: rgba(233, 200, 148, 0.28);
+}
+
+.zone[data-room="outdoor"]:hover path:first-child,
+.zone[data-room="outdoor"]:focus-visible path:first-child {
+  fill: rgba(233, 200, 148, 0.12);
+}
+
+.zone:focus-visible path:first-child {
+  stroke: var(--golden);
+  stroke-width: 2;
+  stroke-dasharray: none;
+}
+
+.links {
+  grid-column: 9 / span 4;
+  display: grid;
+  align-content: space-between;
+  gap: 3rem;
+}
+
+.links ul {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.link {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color 0.25s, transform 0.3s var(--ease);
+}
+
+.link:hover {
+  color: var(--golden);
+  transform: translateX(6px);
+}
+
+[dir="rtl"] .link:hover {
+  transform: translateX(-6px);
+}
+
+.contact {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.contact a:not(:global(.btn)) {
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.contact a:not(:global(.btn)):hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .planCol,
+  .links {
+    grid-column: 1 / -1;
+  }
+}

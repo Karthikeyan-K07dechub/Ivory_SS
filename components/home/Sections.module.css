@@ -1,0 +1,506 @@
+/* Shared section head: an asymmetric pair, title left, lede right */
+.head {
+  align-items: end;
+  row-gap: 1.5rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.headTitle {
+  grid-column: 1 / span 7;
+}
+
+.headLede {
+  grid-column: 9 / span 4;
+}
+
+@media (max-width: 899px) {
+  .headTitle,
+  .headLede {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===================================================================== Systems */
+.systems {
+  background: var(--ivory);
+}
+
+/* ===================================================================== Why Ivory */
+.why {
+  background: var(--paper);
+}
+
+.whyGrid {
+  row-gap: clamp(3rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.whyLead {
+  grid-column: 1 / span 6;
+  display: grid;
+  gap: 1.75rem;
+  align-content: start;
+}
+
+.whyImage {
+  grid-column: 8 / span 5;
+  grid-row: 1 / span 2;
+}
+
+.pull {
+  grid-column: 1 / span 6;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.75rem, 1rem + 2.6vw, 2.25rem);
+  line-height: 1.2;
+  padding-inline-start: clamp(1.25rem, 3vw, 2.5rem);
+  border-inline-start: 2px solid var(--champagne);
+  max-width: 24ch;
+  align-self: end;
+}
+
+[dir="rtl"] .pull {
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.pillars {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  border-top: var(--hairline);
+}
+
+.pillar {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  padding-top: 2rem;
+}
+
+.pillar h3 {
+  font-size: var(--step-2);
+}
+
+.pillar p {
+  max-width: 38ch;
+}
+
+@media (max-width: 899px) {
+  .whyLead,
+  .whyImage,
+  .pull {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================================================== How we work */
+.how {
+  background: var(--ivory);
+}
+
+/* ===================================================================== Projects */
+.projects {
+  background: var(--paper);
+}
+
+.projectList {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: clamp(3.5rem, 7vw, 6rem);
+}
+
+.project:nth-child(1) {
+  grid-column: 1 / -1;
+}
+
+.project:nth-child(2) {
+  grid-column: 1 / span 6;
+}
+
+.project:nth-child(3) {
+  grid-column: 8 / span 5;
+  margin-top: clamp(4rem, 12vw, 12rem);
+}
+
+.projectLink {
+  display: grid;
+  gap: 1.5rem;
+  text-decoration: none;
+}
+
+.project:nth-child(1) .projectLink {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: end;
+}
+
+.project:nth-child(1) .projectImage {
+  grid-column: 1 / span 8;
+}
+
+.project:nth-child(1) .projectText {
+  grid-column: 9 / span 4;
+}
+
+.projectImage {
+  overflow: hidden;
+}
+
+.projectText {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.projectTitle {
+  font-size: var(--step-3);
+  line-height: 1.02;
+}
+
+.projectMeta {
+  color: var(--ink-soft);
+}
+
+.projectLink:hover .projectTitle {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+}
+
+@media (max-width: 899px) {
+  .project:nth-child(n) {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+  .project:nth-child(1) .projectImage,
+  .project:nth-child(1) .projectText {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===================================================================== Care */
+.care {
+  background: var(--ivory);
+}
+
+.careGrid {
+  row-gap: 3rem;
+}
+
+.careLead {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 1.75rem;
+  align-content: start;
+}
+
+.emergency {
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 1.25rem;
+  border-top: var(--hairline);
+}
+
+.emLabel {
+  font-weight: 500;
+}
+
+.emValue {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  justify-self: start;
+}
+
+.tiers {
+  grid-column: 7 / -1;
+  display: grid;
+  border-top: 1px solid var(--ink);
+}
+
+.tier {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 1.2fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding-block: 1.5rem;
+  border-bottom: var(--hairline);
+}
+
+.tier[data-featured] {
+  background: var(--paper);
+  padding-inline: 1rem;
+  margin-inline: -1rem;
+}
+
+.tierName {
+  font-size: var(--step-2);
+}
+
+.tierFor,
+.tierResponse {
+  color: var(--ink-soft);
+}
+
+.tierPrice {
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: end;
+}
+
+.health {
+  grid-column: 7 / -1;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.healthText {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  max-width: 28ch;
+}
+
+.healthCtas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .tier {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tierPrice {
+    text-align: start;
+  }
+}
+
+@media (max-width: 899px) {
+  .careLead,
+  .tiers,
+  .health {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===================================================================== Brands */
+.brands {
+  background: var(--paper);
+  padding-block: calc(var(--section) * 0.75);
+}
+
+.brandsGrid {
+  row-gap: 3rem;
+  align-items: start;
+}
+
+.brandsLead {
+  grid-column: 1 / span 4;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.brandsLead h2 {
+  font-size: var(--step-2);
+}
+
+.brandList {
+  grid-column: 6 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.brand {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.75rem 1.25rem;
+  border: 1px solid var(--ink);
+  text-align: center;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1;
+}
+
+.brandStatus {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--champagne-deep);
+}
+
+[dir="rtl"] .brandStatus {
+  font-style: normal;
+}
+
+.protocols {
+  grid-column: 6 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem 2rem;
+}
+
+.protocolsTitle {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.protocolList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.protocolList li {
+  padding: 0.35rem 0.8rem;
+  border: var(--hairline);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 899px) {
+  .brandsLead,
+  .brandList,
+  .protocols {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .brandList {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================================================================== Testimonials */
+.quotes {
+  background: var(--ivory);
+}
+
+.quotesTitle {
+  font-size: var(--step-2);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* ===================================================================== Professionals band */
+.pros {
+  padding-block: clamp(5rem, 10vw, 9rem);
+  background: var(--dusk);
+}
+
+.prosGrid {
+  row-gap: 2rem;
+  align-items: end;
+}
+
+.prosTitle {
+  grid-column: 1 / span 6;
+}
+
+.prosBody {
+  grid-column: 8 / span 5;
+  display: grid;
+  gap: 2rem;
+}
+
+.prosCtas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 899px) {
+  .prosTitle,
+  .prosBody {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===================================================================== Final night scene */
+.final {
+  background: var(--night);
+  color: var(--paper);
+  padding-block: var(--section) clamp(4rem, 8vw, 6rem);
+  --glow: var(--golden);
+}
+
+.finalGrid {
+  row-gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.finalArt {
+  grid-column: 1 / -1;
+  max-width: 1100px;
+}
+
+.finalText {
+  grid-column: 1 / span 6;
+  display: grid;
+  gap: 1.75rem;
+  justify-items: start;
+}
+
+.finalTitle {
+  font-size: var(--step-4);
+}
+
+.finalCtas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.contactList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem var(--gutter);
+  margin-top: 1rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(251, 248, 242, 0.18);
+  width: 100%;
+}
+
+.contactList dt {
+  font-size: 0.875rem;
+  color: var(--golden);
+}
+
+.contactList dd a {
+  text-decoration: none;
+}
+
+.contactList dd a:hover {
+  text-decoration: underline;
+}
+
+.finalMap {
+  grid-column: 8 / -1;
+}
+
+@media (max-width: 899px) {
+  .finalText,
+  .finalMap {
+    grid-column: 1 / -1;
+  }
+  .contactList {
+    grid-template-columns: 1fr;
+  }
+}

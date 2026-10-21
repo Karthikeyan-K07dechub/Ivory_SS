@@ -1,0 +1,118 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-h);
+  background: var(--scene-bg);
+  color: var(--scene-fg);
+  border-bottom: 1px solid var(--scene-line);
+}
+
+.bar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.home {
+  display: inline-flex;
+  color: inherit;
+}
+
+.home svg {
+  height: 2.15rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1.6vw, 1.25rem);
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  padding-inline: 0.25rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.lang span {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.lang:hover span {
+  opacity: 1;
+}
+
+.lang .current {
+  opacity: 1;
+}
+
+.sep {
+  opacity: 0.35 !important;
+}
+
+.arGlyph {
+  font-family: var(--font-amiri), serif;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.plan {
+  min-height: 2.75rem;
+  padding-block: 0.6rem;
+  --btn-bg: var(--scene-fg);
+  --btn-fg: var(--scene-bg);
+}
+
+.plan:hover {
+  --btn-bg: var(--champagne);
+  --btn-fg: var(--ink);
+}
+
+.menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0 0.25rem;
+  border: 0;
+  background: none;
+  font-weight: 500;
+  font-size: 0.975rem;
+}
+
+.menuIcon {
+  display: grid;
+  gap: 5px;
+  width: 1.4rem;
+}
+
+.menuIcon span {
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease);
+}
+
+.menuIcon span:last-child {
+  width: 65%;
+  justify-self: end;
+}
+
+.menu:hover .menuIcon span:last-child {
+  transform: scaleX(1.5);
+  transform-origin: right;
+}
+
+@media (max-width: 720px) {
+  .plan {
+    display: none;
+  }
+}

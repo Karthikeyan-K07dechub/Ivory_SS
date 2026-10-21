@@ -1,0 +1,92 @@
+.hero {
+  padding-top: calc(var(--header-h) + clamp(3rem, 8vw, 7rem));
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+  background: var(--ivory);
+}
+
+.hero[data-tone="dawn"] {
+  background: var(--dawn);
+}
+.hero[data-tone="noon"] {
+  background: var(--noon);
+}
+.hero[data-tone="golden"] {
+  background: var(--golden);
+  --glow: var(--noon);
+}
+.hero[data-tone="dusk"] {
+  background: var(--dusk);
+  color: var(--paper);
+}
+.hero[data-tone="night"] {
+  background: var(--night);
+  color: var(--paper);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 3rem;
+  align-items: end;
+}
+
+.text {
+  grid-column: 1 / span 9;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+}
+
+.grid[data-has-aside] .text {
+  grid-column: 1 / span 6;
+}
+
+.title {
+  font-size: var(--step-4);
+  max-width: 16ch;
+}
+
+.intro {
+  max-width: 40ch;
+}
+
+.back {
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+[dir="rtl"] .back {
+  font-style: normal;
+}
+
+.back a {
+  text-decoration: none;
+}
+
+.back a:hover {
+  text-decoration: underline;
+}
+
+.aside {
+  grid-column: 7 / -1;
+}
+
+@media (max-width: 899px) {
+  .text,
+  .grid[data-has-aside] .text,
+  .aside {
+    grid-column: 1 / -1;
+  }
+}
+
+.hero[data-tone="dusk"] :global(.btn),
+.hero[data-tone="night"] :global(.btn) {
+  --btn-bg: var(--ivory);
+  --btn-fg: var(--ink);
+}
+
+.hero[data-tone="dusk"] :global(.btn):hover,
+.hero[data-tone="night"] :global(.btn):hover {
+  --btn-bg: var(--golden);
+}

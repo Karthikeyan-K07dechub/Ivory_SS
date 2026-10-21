@@ -1,0 +1,110 @@
+.how {
+  position: relative;
+  padding-top: clamp(1rem, 3vw, 2.5rem);
+}
+
+.track {
+  position: absolute;
+  inset-inline: var(--margin);
+  top: calc(clamp(1rem, 3vw, 2.5rem) + 0.6rem);
+  height: 2px;
+}
+
+.base,
+.progress {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.base {
+  top: 0.5px;
+  height: 1px;
+  background: var(--stone);
+}
+
+.progress {
+  background: var(--champagne);
+  transform-origin: left center;
+}
+
+[dir="rtl"] .progress {
+  transform-origin: right center;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  padding-top: 2.75rem;
+}
+
+.node {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: var(--ivory);
+  transition: background-color 0.5s var(--ease), border-color 0.5s, box-shadow 0.6s;
+}
+
+.step[data-on] .node {
+  background: var(--golden);
+  border-color: var(--champagne);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--golden) 35%, transparent);
+}
+
+.title {
+  font-size: var(--step-2);
+  transition: color 0.5s;
+}
+
+.text {
+  max-width: 26ch;
+  opacity: 0.55;
+  transition: opacity 0.5s var(--ease);
+}
+
+.step[data-on] .text {
+  opacity: 1;
+}
+
+@media (max-width: 899px) {
+  .track {
+    inset-inline: auto;
+    inset-inline-start: calc(var(--margin) + 0.6rem);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    height: auto;
+  }
+  .base {
+    width: 1px;
+    height: auto;
+  }
+  .progress {
+    width: 2px;
+    transform-origin: top center !important;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+  }
+  .step {
+    padding-top: 0;
+    padding-inline-start: 3rem;
+  }
+}

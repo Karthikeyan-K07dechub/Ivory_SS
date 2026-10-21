@@ -1,0 +1,16 @@
+.logo {
+  height: 2.5rem;
+  width: auto;
+  overflow: visible;
+}
+
+.sub {
+  fill: currentColor;
+  font-family: var(--font-hanken), system-ui, sans-serif;
+  font-size: 7.5px;
+  font-weight: 500;
+}
+
+.stem {
+  stroke: var(--champagne);
+}

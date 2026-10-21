@@ -1,0 +1,45 @@
+.button {
+  position: fixed;
+  inset-inline-end: var(--margin);
+  bottom: calc(var(--margin) + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 3.25rem;
+  padding: 0 1.15rem 0 0.95rem;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  /* It truly floats over content, so it is the one element that carries a shadow */
+  box-shadow: 0 10px 30px -12px rgba(18, 20, 26, 0.55);
+  transition: transform 0.25s var(--ease), background-color 0.25s;
+}
+
+.button:hover {
+  background: var(--dusk);
+  transform: translateY(-2px);
+}
+
+.icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--golden);
+}
+
+@media (max-width: 640px) {
+  .button {
+    padding: 0;
+    width: 3.25rem;
+    justify-content: center;
+  }
+  .text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}

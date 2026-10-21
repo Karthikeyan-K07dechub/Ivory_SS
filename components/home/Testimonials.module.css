@@ -1,0 +1,75 @@
+.wrap {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.stage {
+  display: grid;
+}
+
+.quote {
+  grid-area: 1 / 1;
+  display: grid;
+  gap: 1.75rem;
+  align-content: start;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.1s var(--ease), visibility 0s linear 1.1s;
+}
+
+.quote[data-active="true"] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1.1s var(--ease);
+}
+
+.text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 1rem + 2.4vw, 2.25rem);
+  line-height: 1.25;
+  max-width: 34ch;
+}
+
+[dir="rtl"] .text {
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.who {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid currentColor;
+  background: none;
+  font-size: 1.1rem;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+  text-align: center;
+}

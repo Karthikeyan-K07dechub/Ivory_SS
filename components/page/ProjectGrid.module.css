@@ -1,0 +1,140 @@
+.wrap {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.filters {
+  display: grid;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: var(--hairline);
+}
+
+.group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.legend {
+  float: left;
+  padding: 0.55rem 0 0;
+  font-weight: 500;
+}
+
+[dir="rtl"] .legend {
+  float: right;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--stone);
+  background: transparent;
+  font-size: 0.925rem;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.option:hover {
+  border-color: var(--ink);
+}
+
+.option[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.optIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2.5rem, 4vw, 3.5rem) var(--gutter);
+}
+
+.card:nth-child(3n + 2) {
+  margin-top: clamp(0rem, 6vw, 6rem);
+}
+
+.link {
+  display: grid;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.meta {
+  font-size: 0.925rem;
+  color: var(--ink-soft);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.1;
+}
+
+.link:hover .title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+}
+
+.summary {
+  max-width: 38ch;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  opacity: 0.75;
+}
+
+.cardIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.empty {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .card:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .group {
+    grid-template-columns: 1fr;
+  }
+  .legend {
+    float: none;
+    padding: 0;
+  }
+}

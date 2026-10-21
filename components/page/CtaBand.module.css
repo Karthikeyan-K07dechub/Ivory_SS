@@ -1,0 +1,38 @@
+.band {
+  background: var(--golden);
+  color: var(--ink);
+  padding-block: clamp(5rem, 10vw, 8rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 2rem;
+  align-items: end;
+}
+
+.title {
+  grid-column: 1 / span 6;
+  font-size: var(--step-3);
+}
+
+.body {
+  grid-column: 8 / span 5;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 899px) {
+  .title,
+  .body {
+    grid-column: 1 / -1;
+  }
+}

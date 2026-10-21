@@ -1,0 +1,96 @@
+.house {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.lines {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lines * {
+  vector-effect: non-scaling-stroke;
+}
+
+.zone {
+  opacity: 0.35;
+  transition: opacity 0.5s var(--ease), stroke 0.5s;
+}
+
+.zone[data-on] {
+  opacity: 1;
+  stroke: var(--champagne-deep);
+}
+
+.pool,
+.fill {
+  stroke: none;
+  fill: var(--golden);
+  opacity: 0;
+  transition: opacity 0.7s var(--ease) 0.1s;
+}
+
+.zone[data-on] .pool {
+  opacity: 0.7;
+}
+
+.zone[data-on] .fill {
+  opacity: 1;
+}
+
+.flow {
+  stroke-dasharray: 3 5;
+}
+
+.zone[data-on] .flow {
+  animation: flow 1.6s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+.curtainL,
+.curtainR {
+  transform-box: fill-box;
+  transition: transform 1.2s var(--ease);
+}
+
+.curtainL {
+  transform-origin: left;
+}
+
+.curtainR {
+  transform-origin: right;
+}
+
+.zone[data-on] .curtainL,
+.zone[data-on] .curtainR {
+  transform: scaleX(8);
+}
+
+.prop {
+  width: 3rem;
+  height: 3rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.prop * {
+  vector-effect: non-scaling-stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zone[data-on] .flow {
+    animation: none;
+  }
+}

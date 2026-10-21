@@ -1,0 +1,47 @@
+.ph {
+  position: relative;
+  text-decoration: underline dotted;
+  text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.22em;
+  cursor: help;
+}
+
+.ph:focus-visible {
+  outline-offset: 2px;
+}
+
+.tip {
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: calc(100% + 0.5rem);
+  z-index: 30;
+  width: max-content;
+  max-width: 16rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.18s, transform 0.18s;
+}
+
+.ph:hover .tip,
+.ph:focus-visible .tip,
+a:focus-visible .ph .tip {
+  opacity: 1;
+  transform: none;
+}
+
+:lang(ar) .en,
+:lang(en) .ar {
+  display: none;
+}

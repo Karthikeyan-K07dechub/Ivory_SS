@@ -1,0 +1,129 @@
+.diagram {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 3rem;
+}
+
+.stage {
+  grid-column: 1 / span 8;
+  grid-row: 1;
+  position: relative;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.orbit {
+  fill: none;
+  stroke: var(--stone);
+  stroke-dasharray: 2 6;
+}
+
+.link {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  vector-effect: non-scaling-stroke;
+}
+
+.centre,
+.node {
+  position: absolute;
+}
+
+.centre {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  width: 11rem;
+  padding: 1.25rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  line-height: 1.2;
+}
+
+.centreIcon {
+  color: var(--paper);
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transform: translate(-50%, -50%);
+  padding: 0.35rem 0.75rem;
+  background: var(--ivory);
+  border: 1px solid var(--stone);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: border-color 0.4s, background-color 0.4s;
+}
+
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  transition: background-color 0.4s;
+}
+
+.node[data-on] {
+  border-color: var(--champagne);
+  background: var(--paper);
+}
+
+.node[data-on] .dot {
+  background: var(--golden);
+  border-color: var(--champagne);
+}
+
+.notes {
+  grid-column: 9 / -1;
+  grid-row: 1;
+  align-self: center;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.note dt {
+  font-weight: 500;
+}
+
+.note dd {
+  color: var(--ink-soft);
+}
+
+@media (max-width: 899px) {
+  .stage,
+  .notes {
+    grid-column: 1 / -1;
+  }
+  .notes {
+    grid-row: 2;
+  }
+  .node {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+  .centre {
+    width: 8rem;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+}

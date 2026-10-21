@@ -1,0 +1,471 @@
+/* ==========================================================================
+   Ivory Smart Home — design tokens and base styles
+   ========================================================================== */
+
+:root {
+  /* Palette */
+  --ivory: #f4efe6;
+  --paper: #fbf8f2;
+  --ink: #1c1f24;
+  --stone: #cfc6b6;
+  --champagne: #b89a6a;
+  --dusk: #2a2622;
+
+  /* Scroll-driven light */
+  --dawn: #dce3e6;
+  --noon: #fff9ee;
+  --golden: #e9c894;
+  --night: #12141a;
+
+  /* Derived */
+  --ink-soft: #4a4e55;
+  --champagne-deep: #8a6f45; /* champagne darkened for AA text on ivory */
+  --hairline: 1px solid var(--stone);
+
+  /* Scene variables, animated on the homepage */
+  --scene-bg: var(--ivory);
+  --scene-fg: var(--ink);
+  --scene-line: var(--stone);
+  --glow: var(--golden);
+
+  /* Type */
+  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-body: var(--font-hanken), system-ui, sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  --step-2: clamp(1.625rem, 1.3rem + 1.4vw, 2.5rem);
+  --step-3: clamp(2.125rem, 1.4rem + 3vw, 4rem);
+  --step-4: clamp(2.5rem, 1.2rem + 5.2vw, 6.25rem);
+  --numeral: clamp(4.5rem, 2rem + 9vw, 11rem);
+
+  /* Space and grid */
+  --margin: clamp(1rem, 3.2vw, 3rem);
+  --gutter: clamp(1rem, 2vw, 1.75rem);
+  --section: clamp(6rem, 12vw, 13rem);
+  --header-h: 4.25rem;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[dir="rtl"] {
+  --font-display: var(--font-amiri), var(--font-newsreader), serif;
+  --font-body: var(--font-plex-ar), var(--font-hanken), sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+[dir="rtl"] body {
+  line-height: 1.75;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Headings */
+.display,
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 340;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+[dir="rtl"] :is(.display, h1, h2, h3) {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+h1,
+.h1 {
+  font-size: var(--step-4);
+}
+
+h2,
+.h2 {
+  font-size: var(--step-3);
+}
+
+h3,
+.h3 {
+  font-size: var(--step-1);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+em,
+.italic {
+  font-style: italic;
+}
+
+[dir="rtl"] em {
+  font-style: normal;
+  color: var(--champagne-deep);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.lede {
+  font-size: var(--step-1);
+  line-height: 1.45;
+  max-width: 34ch;
+}
+
+[dir="rtl"] .lede {
+  max-width: 40ch;
+}
+
+.measure {
+  max-width: 62ch;
+}
+
+.numeral {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: var(--numeral);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+[dir="rtl"] .numeral {
+  font-family: var(--font-newsreader), serif;
+}
+
+/* Layout */
+.wrap {
+  width: 100%;
+  padding-inline: var(--margin);
+  margin-inline: auto;
+  max-width: 1680px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section);
+}
+
+.rule {
+  border: 0;
+  border-top: var(--hairline);
+  margin: 0;
+}
+
+.chapter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-0);
+  color: inherit;
+  opacity: 0.8;
+}
+
+[dir="rtl"] .chapter {
+  font-style: normal;
+}
+
+.caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step--1);
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+[dir="rtl"] .caption {
+  font-style: normal;
+}
+
+/* Buttons: square corners, one fill, decided once */
+.btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 3rem;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid var(--btn-bg);
+  border-radius: 0;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-size: 0.975rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.2s var(--ease);
+}
+
+.btn:hover {
+  --btn-bg: var(--dusk);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: currentColor;
+  border-color: currentColor;
+}
+
+.btn--ghost:hover {
+  --btn-bg: currentColor;
+}
+
+.btn--ghost:hover > span {
+  color: var(--paper);
+}
+
+.btn--light {
+  --btn-bg: var(--ivory);
+  --btn-fg: var(--ink);
+}
+
+.btn--light:hover {
+  --btn-bg: var(--paper);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.1em;
+  transition: gap 0.25s var(--ease), opacity 0.2s;
+}
+
+.link-arrow:hover {
+  gap: 0.75em;
+}
+
+.arrow {
+  display: inline-block;
+}
+
+[dir="rtl"] .arrow {
+  transform: scaleX(-1);
+}
+
+/* Focus: always visible */
+:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
+.on-dark :focus-visible {
+  outline-color: var(--golden);
+}
+
+/* Accessibility helpers */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  inset-inline-start: var(--margin);
+  top: 0.5rem;
+  z-index: 200;
+  transform: translateY(-200%);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+::selection {
+  background: var(--golden);
+  color: var(--ink);
+}
+
+/* Reveal on scroll — content is only hidden once JS has confirmed it can reveal it */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--d, 0) * 80ms);
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    transform: none;
+    transition: opacity 0.6s linear;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Forms (real form fields may carry lines) */
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.field .opt {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--stone);
+  border-radius: 0;
+  background: var(--paper);
+  transition: border-color 0.2s;
+}
+
+.input:hover {
+  border-color: var(--ink-soft);
+}
+
+.input:focus-visible {
+  outline-offset: 0;
+  border-color: var(--ink);
+}
+
+textarea.input {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+
+.input[aria-invalid="true"] {
+  border-color: #9b3b2e;
+}
+
+.error {
+  color: #8f3326;
+  font-size: 0.9rem;
+}
+
+.on-dark {
+  background: var(--ink);
+  color: var(--paper);
+  --scene-line: rgba(251, 248, 242, 0.22);
+}

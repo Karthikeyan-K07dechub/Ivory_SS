@@ -1,0 +1,72 @@
+.art {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.lines {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lines * {
+  vector-effect: non-scaling-stroke;
+}
+
+.faint {
+  opacity: 0.45;
+}
+
+.sun {
+  stroke: var(--champagne);
+}
+
+.leaf {
+  fill: var(--dawn);
+}
+
+.glow {
+  stroke: none;
+  fill: var(--golden);
+  opacity: 0.15;
+}
+
+.pool {
+  stroke: none;
+  animation: sconce 2.4s var(--ease) 0.6s both;
+}
+
+@keyframes sconce {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.screen {
+  fill: var(--golden);
+  stroke: currentColor;
+  animation: blink 3.6s ease-in-out 1.4s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    fill-opacity: 0.3;
+  }
+  50% {
+    fill-opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen {
+    animation: none;
+    fill-opacity: 0.6;
+  }
+}

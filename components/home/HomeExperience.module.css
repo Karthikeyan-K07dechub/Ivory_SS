@@ -1,0 +1,391 @@
+.experience {
+  color: var(--scene-fg);
+}
+
+/* ===================================================================== Hero */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  padding-top: calc(var(--header-h) + clamp(1.5rem, 4vh, 3.5rem));
+  background: var(--dawn);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto 1fr;
+  column-gap: var(--gutter);
+  min-height: calc(100svh - var(--header-h) - clamp(1.5rem, 4vh, 3.5rem));
+}
+
+.headline {
+  grid-column: 1 / span 11;
+  grid-row: 1;
+  font-size: clamp(2.35rem, 0.9rem + 4.6vw, 6.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  max-width: 19ch;
+  position: relative;
+  z-index: 2;
+}
+
+[dir="rtl"] .headline {
+  line-height: 1.3;
+  letter-spacing: 0;
+  max-width: 22ch;
+}
+
+.heroCopy {
+  grid-column: 1 / span 4;
+  grid-row: 2;
+  align-self: end;
+  display: grid;
+  gap: 1.75rem;
+  justify-items: start;
+  padding-bottom: clamp(5rem, 12vh, 8rem);
+  position: relative;
+  z-index: 2;
+}
+
+.subline {
+  font-size: var(--step-1);
+  line-height: 1.4;
+  max-width: 30ch;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.heroArt {
+  grid-column: 5 / -1;
+  grid-row: 2;
+  align-self: end;
+  height: min(62vh, 44vw);
+  margin-top: 1.5rem;
+  will-change: transform;
+}
+
+.prompt {
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: clamp(1.25rem, 3vh, 2rem);
+  margin-inline-start: var(--margin);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-0);
+  text-decoration: none;
+  z-index: 3;
+}
+
+[dir="rtl"] .prompt {
+  font-style: normal;
+}
+
+.promptLine {
+  display: block;
+  width: 1px;
+  height: 2.5rem;
+  background: currentColor;
+  transform-origin: top;
+  animation: drop 2.2s var(--ease) infinite;
+}
+
+@keyframes drop {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@media (max-width: 899px) {
+  .heroGrid {
+    grid-template-rows: auto auto auto;
+    row-gap: 1.75rem;
+  }
+  .headline {
+    grid-column: 1 / -1;
+  }
+  .heroCopy {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding-bottom: 0;
+  }
+  .heroArt {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    height: auto;
+    aspect-ratio: 800 / 520;
+    margin-bottom: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promptLine {
+    animation: none;
+  }
+}
+
+/* ===================================================================== Walkthrough */
+.walk {
+  position: relative;
+  background: var(--scene-bg);
+  color: var(--scene-fg);
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro {
+  padding: var(--section) var(--margin) clamp(3rem, 6vw, 5rem);
+  display: grid;
+  gap: 1.5rem;
+  align-content: center;
+  background: var(--dawn);
+  color: var(--ink);
+}
+
+.walkTitle {
+  font-size: var(--step-3);
+  max-width: 11ch;
+}
+
+.walkIntro {
+  font-size: var(--step-1);
+  line-height: 1.45;
+  max-width: 26ch;
+}
+
+.walkArrow {
+  font-size: var(--step-3);
+  font-family: var(--font-display);
+  font-weight: 200;
+  line-height: 1;
+}
+
+.room {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: center;
+  padding: clamp(4rem, 9vw, 7rem) var(--margin);
+  transition: background-color 0.6s var(--ease), color 0.6s var(--ease);
+}
+
+/* Stacked mode: each room has its own light */
+.experience[data-mode="stack"] .room[data-light="dawn"] {
+  background: var(--dawn);
+  color: var(--ink);
+  --glow: var(--golden);
+}
+.experience[data-mode="stack"] .room[data-light="noon"] {
+  background: var(--noon);
+  color: var(--ink);
+  --glow: var(--golden);
+}
+.experience[data-mode="stack"] .room[data-light="golden"] {
+  background: var(--golden);
+  color: var(--ink);
+  --glow: var(--noon);
+}
+.experience[data-mode="stack"] .room[data-light="dusk"] {
+  background: var(--dusk);
+  color: var(--paper);
+  --glow: var(--golden);
+}
+.experience[data-mode="stack"] .room[data-light="night"] {
+  background: var(--night);
+  color: var(--paper);
+  --glow: var(--golden);
+}
+
+.roomText {
+  grid-column: 1 / span 4;
+  display: grid;
+  gap: 1.1rem;
+  align-content: center;
+  justify-items: start;
+}
+
+.time {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.period {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-style: italic;
+}
+
+[dir="rtl"] .period {
+  font-style: normal;
+}
+
+.roomName {
+  font-size: var(--step-3);
+  line-height: 1;
+}
+
+.moment {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  max-width: 22ch;
+}
+
+[dir="rtl"] .moment {
+  line-height: 1.5;
+}
+
+.detail {
+  max-width: 40ch;
+}
+
+.chipsLabel {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.85rem 0.35rem 0.55rem;
+  border: 1px solid currentColor;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+[dir="rtl"] .chip {
+  padding: 0.35rem 0.55rem 0.35rem 0.85rem;
+}
+
+.chip:hover {
+  background: var(--scene-fg);
+  color: var(--scene-bg);
+}
+
+.experience[data-mode="stack"] .chip:hover {
+  background: currentColor;
+}
+
+.experience[data-mode="stack"] .chip:hover > * {
+  color: var(--paper);
+}
+
+.chipIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.roomArt {
+  grid-column: 6 / -1;
+  max-height: 72vh;
+  display: flex;
+  justify-content: center;
+}
+
+.roomArt svg {
+  max-height: 72vh;
+}
+
+/* Horizontal mode: one pinned stage, rooms slide past */
+.experience[data-mode="horizontal"] .walk {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.experience[data-mode="horizontal"] .track {
+  flex-direction: row;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.experience[data-mode="horizontal"] .intro {
+  width: 34vw;
+  height: 100%;
+  padding: calc(var(--header-h) + 2rem) var(--margin) 3rem;
+  background: transparent;
+  color: inherit;
+}
+
+.experience[data-mode="horizontal"] .room {
+  width: 100vw;
+  height: 100%;
+  padding: calc(var(--header-h) + 2rem) var(--margin) 3rem calc(var(--margin) + 11rem);
+}
+
+[dir="rtl"] .experience[data-mode="horizontal"] .room {
+  padding: calc(var(--header-h) + 2rem) calc(var(--margin) + 11rem) 3rem var(--margin);
+}
+
+.experience[data-mode="horizontal"] .roomText {
+  grid-column: 1 / span 5;
+}
+
+.experience[data-mode="horizontal"] .roomArt {
+  grid-column: 6 / -1;
+}
+
+/* Text rises in as each room arrives */
+.room .roomText > * {
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.experience[data-mode="horizontal"] .room:not([data-active="true"]) .roomText > * {
+  opacity: 0.35;
+  transform: translateY(10px);
+}
+
+@media (max-width: 899px) {
+  .roomText,
+  .roomArt {
+    grid-column: 1 / -1;
+  }
+  .roomArt {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1180px) {
+  .experience[data-mode="horizontal"] .roomText {
+    grid-column: 1 / span 6;
+  }
+  .experience[data-mode="horizontal"] .roomArt {
+    grid-column: 7 / -1;
+  }
+}
