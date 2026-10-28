@@ -181,24 +181,33 @@
 @media (max-width: 899px) {
   .hero {
     min-height: auto;
-    --hero-top-space: 1.25rem;
+    --hero-top-space: 3.5rem;
     --hero-bottom-space: 3.5rem;
   }
 
   .heroGrid {
     grid-template-rows: auto auto auto;
-    row-gap: 1.25rem;
+    row-gap: 2rem;
     min-height: 0;
     align-content: start;
   }
   .headline {
     grid-column: 1 / -1;
+    line-height: 1.15;
   }
   .heroCopy {
     grid-column: 1 / -1;
     grid-row: 2;
     padding-bottom: 0;
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+
+  .subline {
+    line-height: 1.65;
+  }
+
+  .ctas {
+    row-gap: 0.875rem;
   }
   .heroArt {
     grid-column: 1 / -1;
@@ -482,7 +491,7 @@
   .intro {
     padding-block: 2rem;
     padding-bottom: 1rem;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .intro + .room {
@@ -495,7 +504,19 @@
   }
 
   .roomText {
-    gap: 0.85rem;
+    gap: 1.25rem;
+  }
+
+  .walkIntro {
+    line-height: 1.6;
+  }
+
+  .roomName {
+    line-height: 1.15;
+  }
+
+  .moment {
+    line-height: 1.35;
   }
 
   .roomText,

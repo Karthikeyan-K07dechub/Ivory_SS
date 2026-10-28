@@ -127,6 +127,10 @@
 }
 
 @media (max-width: 899px) {
+  .link {
+    gap: 1.125rem;
+  }
+
   .wrap,
   .grid {
     gap: 1.5rem;

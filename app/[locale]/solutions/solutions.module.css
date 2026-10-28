@@ -264,6 +264,11 @@
 
   .col {
     padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .whatItem {
+    gap: 1.25rem;
   }
 
   .sectionTitle,

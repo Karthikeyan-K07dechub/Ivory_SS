@@ -55,6 +55,23 @@
   :root {
     --section: clamp(2.5rem, 6vw, 3.5rem);
   }
+
+  html body {
+    line-height: 1.65;
+  }
+
+  body h1,
+  body h2 {
+    line-height: 1.15;
+  }
+
+  body .lede {
+    line-height: 1.6;
+  }
+
+  body .field {
+    gap: 0.6rem;
+  }
 }
 
 [dir="rtl"] {

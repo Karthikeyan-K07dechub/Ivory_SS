@@ -313,7 +313,13 @@ a.channel:hover {
   .splitTitle,
   .formCol,
   .teams {
-    gap: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .capability,
+  .promise,
+  .team {
+    gap: 1rem;
   }
 
   .profile {

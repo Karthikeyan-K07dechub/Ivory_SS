@@ -148,7 +148,11 @@
   }
 
   .brand {
-    gap: 1rem;
+    gap: 1.25rem;
+  }
+
+  .col {
+    gap: 1.25rem;
   }
 
   .name {

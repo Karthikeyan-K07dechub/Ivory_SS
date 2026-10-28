@@ -52,6 +52,16 @@
   font-size: var(--step-2);
 }
 
+@media (max-width: 899px) {
+  .form {
+    row-gap: 1.5rem;
+  }
+
+  .actions {
+    margin-top: 0.75rem;
+  }
+}
+
 @media (max-width: 640px) {
   .form {
     grid-template-columns: 1fr;
