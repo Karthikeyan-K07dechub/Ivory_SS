@@ -73,6 +73,19 @@
 }
 
 @media (max-width: 899px) {
+  .hero {
+    padding-top: calc(var(--header-h) + 1.5rem);
+    padding-bottom: var(--section);
+  }
+
+  .grid {
+    row-gap: 1.5rem;
+  }
+
+  .text {
+    gap: 1rem;
+  }
+
   .text,
   .grid[data-has-aside] .text,
   .aside {

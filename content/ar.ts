@@ -121,7 +121,7 @@ const projectAr: Record<string, { title: string; location: string; size: string;
     size: "5 غرف نوم · 850 م²",
     timeline: "6 أشهر من التصميم إلى التسليم",
     quoteAuthor: "مالك فيلا، الحمراء",
-    caption: "صورة: فيلا الحمراء، غرفة المعيشة عند الغروب (للاستبدال)",
+    caption: "مساحة معيشة مضيئة بإطلالة على الحديقة",
   },
   "apartment-mina-al-arab": {
     title: "شقة، ميناء العرب",
@@ -129,7 +129,7 @@ const projectAr: Record<string, { title: string; location: string; size: string;
     size: "3 غرف نوم · 210 م²",
     timeline: "3 أسابيع في منزل مكتمل",
     quoteAuthor: "مالك شقة، ميناء العرب",
-    caption: "صورة: شقة ميناء العرب، إطلالة بحرية عند الظهيرة (للاستبدال)",
+    caption: "تصميم داخلي معاصر لشقة مضيئة",
   },
   "office-building-rak": {
     title: "مبنى مكاتب، رأس الخيمة",
@@ -137,7 +137,7 @@ const projectAr: Record<string, { title: string; location: string; size: string;
     size: "6 طوابق · 4,200 م²",
     timeline: "9 أشهر مع مقاول الأعمال الكهروميكانيكية",
     quoteAuthor: "مدير المرافق، رأس الخيمة",
-    caption: "صورة: مبنى المكاتب في رأس الخيمة، الردهة (للاستبدال)",
+    caption: "ضوء النهار في ردهة مكتب حديث",
   },
 };
 
@@ -191,7 +191,7 @@ export const ar: SiteContent = {
     emergency: T("+971 56 692 2452 · على مدار الساعة لعملاء خطط الرعاية"),
     serviceArea: [T("رأس الخيمة"), T("أم القيوين"), T("عجمان"), T("الشارقة")],
     serviceAreaLabel: "منطقة الخدمة",
-    mapCaption: "خريطة: شارع السلام، بجوار حديقة الدهان (تُستبدل بخريطة تفاعلية)",
+    mapCaption: "رأس الخيمة · منطقة الخدمة في شارع السلام",
   },
   ui: {
     menu: "القائمة",
@@ -266,7 +266,7 @@ export const ar: SiteContent = {
         { title: "هندسة متقنة", text: P(en.home.why.pillars[1].text) },
         { title: "دعم محلي", text: "فريقنا هنا في رأس الخيمة. ندرّب عائلتك عند التسليم، ونقدّم خطط صيانة، ونعود متى احتجت إلينا." },
       ],
-      image: { ...en.home.why.image, alt: "مهندس من آيفوري يراجع مخطط فيلا مع أصحاب المنزل", caption: "صورة: اجتماع تصميم مع صاحب منزل (للاستبدال)" },
+      image: { ...en.home.why.image, alt: "متخصصان يناقشان مخططات المنزل خلال جلسة استشارة تصميم", caption: "حديث عن منزلك قبل أن يبدأ التصميم" },
     },
     how: {
       title: "طريقة عملنا",
@@ -470,7 +470,7 @@ export const ar: SiteContent = {
       { title: "مع المقاولين", text: P(en.prosPage.teams[2].text) },
     ],
     profileTitle: "ملف الشركة",
-    profileText: T("القدرات والمراجع والشهادات في ملف PDF واحد (سيتم توفيره)."),
+    profileText: "نزّل ملفاً تعريفياً تجريبياً يوضح خدمات المنزل الذكي وطريقة عملنا (PDF).",
     profileCta: "تنزيل ملف الشركة",
     formTitle: "اطلب تصميمًا وجدول كميات",
     formIntro: "ارفع مخططاتك وسنرد عليك بمقترح للنظام.",

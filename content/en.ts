@@ -1,5 +1,6 @@
 import type { SiteContent, SystemContent, ProjectContent } from "./types";
 import { tbc } from "./helpers";
+import { photo } from "./photography";
 
 /* ---------------------------------------------------------------------------
  * Ivory Smart Home — English content.
@@ -393,13 +394,6 @@ const systems: SystemContent[] = [
   },
 ];
 
-const gallery = (place: string, rooms: string[]) =>
-  rooms.map((room, i) => ({
-    alt: `${room}, ${place}`,
-    caption: `Photo: ${room.toLowerCase()} (replace)`,
-    tone: (["golden", "dawn", "noon", "dusk", "stone", "night"] as const)[i % 6],
-  }));
-
 const projects: ProjectContent[] = [
   {
     slug: "private-villa-al-hamra",
@@ -410,7 +404,7 @@ const projects: ProjectContent[] = [
     timeline: tbc("6 months, from design to handover"),
     systems: ["smart-lighting", "climate-control", "curtains-shades", "security-cctv", "intercom-access", "audio-video"],
     summary: tbc("A family villa automated from the shell stage: lighting scenes, curtains, cooling and security in one system."),
-    cover: { alt: "Living room of a villa in Al Hamra at dusk", caption: "Photo: Al Hamra villa, living room at dusk (replace)", tone: "golden" },
+    cover: photo("villa-living", "golden"),
     challenge: tbc(
       "The family wanted every room to feel simple to use for parents, children and visiting grandparents, with a large majlis that changes from everyday use to formal guests in seconds."
     ),
@@ -420,7 +414,7 @@ const projects: ProjectContent[] = [
     result: tbc(
       "One keypad per room, fewer switches on every wall, and a villa that cools only the rooms in use. The family was trained at handover and is on a Plus care plan."
     ),
-    gallery: gallery("Al Hamra villa", ["Majlis with evening scene", "Entrance and video intercom", "Kitchen at midday", "Master bedroom curtains", "Garden lighting", "Equipment rack"]),
+    gallery: [photo("lounge", "golden"), photo("smart-access", "dawn"), photo("villa-kitchen", "noon"), photo("bedroom-curtains", "dusk"), photo("villa-evening", "night"), photo("equipment-rack")],
     quote: { text: tbc("We stopped thinking about switches. The house just feels right at every hour."), author: tbc("Homeowner, Al Hamra") },
   },
   {
@@ -432,11 +426,11 @@ const projects: ProjectContent[] = [
     timeline: tbc("3 weeks, in a finished home"),
     systems: ["curtains-shades", "smart-lighting", "networking-wifi", "climate-control"],
     summary: tbc("A finished sea-view apartment upgraded wirelessly, with no walls opened."),
-    cover: { alt: "Sea-view apartment in Mina Al Arab at midday", caption: "Photo: Mina Al Arab apartment, sea view at noon (replace)", tone: "noon" },
+    cover: photo("apartment-living", "noon"),
     challenge: tbc("Floor-to-ceiling glass made the apartment hot every afternoon, and the owners did not want any building work."),
     solution: tbc("Wireless curtain motors on the existing tracks, sun-tracking shades, smart dimmers in existing back boxes and a mesh Wi-Fi network."),
     result: tbc("Cooler afternoons, curtains that look after themselves, and strong Wi-Fi on the balcony."),
-    gallery: gallery("Mina Al Arab apartment", ["Living room shades", "Balcony at sunset", "Bedroom morning light", "Kitchen dimmers", "Wi-Fi access point", "Entrance keypad"]),
+    gallery: [photo("panoramic-curtains", "noon"), photo("sea-balcony", "golden"), photo("apartment-bedroom", "dawn"), photo("apartment-kitchen", "noon"), photo("wifi-router"), photo("smart-access")],
     quote: { text: tbc("No dust, no broken walls, and the apartment is noticeably cooler in the afternoon."), author: tbc("Owner, Mina Al Arab") },
   },
   {
@@ -448,11 +442,11 @@ const projects: ProjectContent[] = [
     timeline: tbc("9 months, with the MEP contractor"),
     systems: ["building-management", "climate-control", "smart-lighting", "intercom-access", "networking-wifi"],
     summary: tbc("Lighting, AC and access for a six-floor office building in one management view."),
-    cover: { alt: "Office building lobby in Ras Al Khaimah", caption: "Photo: RAK office building, lobby (replace)", tone: "stone" },
+    cover: photo("office-lobby"),
     challenge: tbc("The owner needed to cut energy use in common areas and give each tenant control of their own floor."),
     solution: tbc("A KNX-based building management system with occupancy-based lighting, tenant AC schedules and card access, designed with the MEP consultant."),
     result: tbc("One view of the whole building for the facility team, with energy reports by floor."),
-    gallery: gallery("RAK office building", ["Lobby lighting", "Tenant floor", "Meeting room panel", "Access control", "Facility dashboard", "Riser and panels"]),
+    gallery: [photo("office-lobby", "noon"), photo("office-floor", "noon"), photo("meeting-room"), photo("smart-access"), photo("facility-monitor", "night"), photo("network-cabling")],
     quote: { text: tbc("The facility team finally sees the whole building on one screen."), author: tbc("Facility manager, RAK") },
   },
 ];
@@ -513,7 +507,7 @@ export const en: SiteContent = {
     emergency: tbc("+971 56 692 2452 · 24/7 for care plan clients"),
     serviceArea: [tbc("Ras Al Khaimah"), tbc("Umm Al Quwain"), tbc("Ajman"), tbc("Sharjah")],
     serviceAreaLabel: "Service area",
-    mapCaption: "Map: Al Salam Street, next to Al Dahan Park (replace with live map)",
+    mapCaption: "Ras Al Khaimah · Al Salam Street service area",
     geo: { lat: 25.7895, lng: 55.9432 },
   },
   ui: {
@@ -604,11 +598,7 @@ export const en: SiteContent = {
           text: "Our team is here in Ras Al Khaimah. We train your family at handover, offer maintenance plans, and come back when you need us.",
         },
       ],
-      image: {
-        alt: "Ivory engineer reviewing a villa floor plan with homeowners",
-        caption: "Photo: design meeting with a homeowner (replace)",
-        tone: "stone",
-      },
+      image: photo("design-consultation"),
     },
     how: {
       title: "How we work",
@@ -862,7 +852,7 @@ export const en: SiteContent = {
       { title: "With contractors", text: "Clear first-fix and second-fix stages that fit your programme." },
     ],
     profileTitle: "Company profile",
-    profileText: tbc("Capabilities, references and certifications in one PDF (to be supplied)."),
+    profileText: "Download a sample company overview with our smart home services and approach (PDF).",
     profileCta: "Download company profile",
     formTitle: "Request a design and BOQ",
     formIntro: "Upload your drawings and we will reply with a system proposal.",

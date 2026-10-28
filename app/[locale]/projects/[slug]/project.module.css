@@ -189,7 +189,33 @@
   color: var(--ink-soft);
 }
 
+@media (min-width: 900px) and (max-width: 1599px) {
+  .systems {
+    padding-bottom: 0;
+  }
+
+  .systems + :global(.section) {
+    padding-top: clamp(2.5rem, 4vw, 4rem);
+  }
+}
+
 @media (max-width: 899px) {
+  .systems {
+    padding-bottom: 0;
+  }
+
+  .galleryTitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery {
+    row-gap: 1.5rem;
+  }
+
+  .quote {
+    padding-block: var(--section);
+  }
+
   .story,
   .similar {
     grid-template-columns: 1fr;

@@ -137,3 +137,25 @@
     grid-column: 1 / -1;
   }
 }
+
+@media (max-width: 899px) {
+  .footer {
+    padding-top: var(--section);
+  }
+
+  .top {
+    row-gap: 1.5rem;
+  }
+
+  .brand {
+    gap: 1rem;
+  }
+
+  .name {
+    margin-top: 2rem;
+  }
+
+  .bottom {
+    margin-top: 1rem;
+  }
+}

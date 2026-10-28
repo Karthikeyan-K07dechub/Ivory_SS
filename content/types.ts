@@ -33,12 +33,15 @@ export type PageKey =
   | "planner"
   | "contact";
 
-/** An image slot. With no `src` it renders a tonal <ScenePlaceholder>; add a path in /public to show a real photo. */
+/** Responsive image content, including optional focal position and stock-photo credit. */
 export interface ImageRef {
   src?: string;
   alt: string;
   caption: Txt;
   tone: Light | "stone";
+  position?: string;
+  illustrative?: boolean;
+  credit?: { name: string; url: string };
 }
 
 export interface RoomContent {

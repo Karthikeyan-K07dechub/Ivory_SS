@@ -48,6 +48,7 @@
 
 @media (max-width: 899px) {
   .servicesTitle {
+    margin-bottom: 1.5rem;
     grid-column: 1 / -1;
   }
   .serviceList {
@@ -250,6 +251,21 @@
 }
 
 @media (max-width: 899px) {
+  .whatGrid,
+  .compareGrid,
+  .relatedGrid,
+  .faqGrid {
+    row-gap: 1.5rem;
+  }
+
+  .worksHead {
+    margin-bottom: 1.5rem;
+  }
+
+  .col {
+    padding: 1.25rem;
+  }
+
   .sectionTitle,
   .whatList,
   .worksHead h2,

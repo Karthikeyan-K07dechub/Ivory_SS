@@ -73,3 +73,13 @@
   min-width: 3ch;
   text-align: center;
 }
+
+@media (max-width: 899px) {
+  .wrap {
+    gap: 1.5rem;
+  }
+
+  .quote {
+    gap: 1rem;
+  }
+}

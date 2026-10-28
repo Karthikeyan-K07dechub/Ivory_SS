@@ -126,6 +126,18 @@
   }
 }
 
+@media (max-width: 899px) {
+  .wrap,
+  .grid {
+    gap: 1.5rem;
+  }
+
+  .filters {
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+  }
+}
+
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;

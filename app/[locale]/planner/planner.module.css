@@ -44,6 +44,14 @@
 }
 
 @media (max-width: 899px) {
+  .page {
+    padding-top: calc(var(--header-h) + 1.5rem);
+  }
+
+  .grid {
+    row-gap: 1.5rem;
+  }
+
   .head,
   .tool {
     grid-column: 1 / -1;

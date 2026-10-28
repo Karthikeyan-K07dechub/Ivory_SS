@@ -445,11 +445,6 @@
   align-items: center;
 }
 
-.finalArt {
-  grid-column: 1 / -1;
-  max-width: 1100px;
-}
-
 .finalText {
   grid-column: 1 / span 6;
   display: grid;
@@ -502,5 +497,53 @@
   }
   .contactList {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 899px) {
+  .head {
+    row-gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .whyGrid,
+  .careGrid,
+  .brandsGrid,
+  .finalGrid {
+    row-gap: 1.5rem;
+  }
+
+  .whyLead,
+  .careLead,
+  .health,
+  .prosBody,
+  .finalText {
+    gap: 1.25rem;
+  }
+
+  .pillar {
+    padding-top: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .projectList {
+    row-gap: 2rem;
+  }
+
+  .projectLink {
+    gap: 1rem;
+  }
+
+  .quotesTitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .pros,
+  .final {
+    padding-block: var(--section);
+  }
+
+  .prosGrid {
+    row-gap: 1.5rem;
   }
 }

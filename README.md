@@ -61,8 +61,9 @@ Helpers used inside the content files (`content/helpers.ts`):
   fully written; the others use shorter content).
 - **Projects**: `projects`. Add or remove entries freely; pages and the sitemap are generated from the list.
 - **Care plans, testimonials, brands, protocols**: `carePlans`, `testimonials`, `brands`, `protocols`.
-- **Photos**: put files in `public/images/` and add `src: "/images/your-photo.jpg"` to the matching image
-  (`cover`, `gallery`, `home.why.image`). Without `src` a tonal placeholder panel is shown.
+- **Photos**: all photo slots use local WebP stock photos from Pexels. See `content/IMAGE_SOURCES.md`
+  for credits and `content/photo-catalog.json` for the catalog. Replace these with verified project
+  photos when available. Run `node scripts/verify-photography.cjs` to check both language catalogs.
 
 ## Connecting leads to email or a CRM
 

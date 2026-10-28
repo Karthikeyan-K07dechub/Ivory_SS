@@ -300,6 +300,26 @@ a.channel:hover {
 }
 
 @media (max-width: 899px) {
+  .blockTitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .split,
+  .promises,
+  .capabilities {
+    row-gap: 1.5rem;
+  }
+
+  .splitTitle,
+  .formCol,
+  .teams {
+    gap: 1.25rem;
+  }
+
+  .profile {
+    padding-block: var(--section);
+  }
+
   .splitTitle,
   .formCol,
   .promises {

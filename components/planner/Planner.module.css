@@ -435,6 +435,18 @@
 }
 
 @media (max-width: 899px) {
+  .planner {
+    gap: 1.5rem;
+  }
+
+  .body {
+    min-height: 0;
+  }
+
+  .fieldset {
+    gap: 1.25rem;
+  }
+
   .systemsStep {
     grid-template-columns: 1fr;
     grid-template-areas: "hint" "house" "grid";

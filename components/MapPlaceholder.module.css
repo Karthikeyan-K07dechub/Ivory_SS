@@ -4,119 +4,13 @@
 }
 
 .map {
+  display: block;
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--stone);
+  background: var(--paper);
 }
 
-.land {
-  fill: var(--paper);
-}
-
-.sea {
-  fill: var(--dawn);
-}
-
-.water {
-  fill: none;
-  stroke: var(--dawn);
-  stroke-width: 10;
-  stroke-linecap: round;
-}
-
-.road {
-  fill: none;
-  stroke: var(--stone);
-  stroke-width: 5;
-}
-
-.minor {
-  fill: none;
-  stroke: var(--stone);
-  stroke-width: 1.5;
-}
-
-.park {
-  fill: color-mix(in srgb, var(--stone) 55%, transparent);
-}
-
-.pin path {
-  fill: var(--ink);
-}
-
-.pinDot {
-  fill: var(--golden);
-}
-
-.pulse {
-  fill: none;
-  stroke: var(--champagne);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: pin 2.6s var(--ease) infinite;
-}
-
-@keyframes pin {
-  from {
-    transform: scale(0.4);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-}
-
-.label {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 13px;
-  fill: var(--ink-soft);
-}
-
-.figure[data-dark] .land {
-  fill: #1b1d24;
-}
-
-.figure[data-dark] .sea,
-.figure[data-dark] .water {
-  fill: #232733;
-  stroke: #232733;
-}
-
-.figure[data-dark] .water {
-  fill: none;
-}
-
-.figure[data-dark] .road,
-.figure[data-dark] .minor {
-  stroke: #3a3d47;
-}
-
-.figure[data-dark] .park {
-  fill: #2a2d36;
-}
-
-.figure[data-dark] .pin path {
-  fill: var(--paper);
-}
-
-.figure[data-dark] .label {
-  fill: #a7a9b0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pulse {
-    animation: none;
-    opacity: 0.6;
-  }
-}
-
-:lang(ar) .en,
-:lang(en) .ar {
-  display: none;
-}
-
-:lang(ar) .label {
-  font-family: var(--font-plex-ar), sans-serif;
-  font-style: normal;
+.figure[data-dark] .map {
+  border-color: rgba(251, 248, 242, 0.25);
 }

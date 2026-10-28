@@ -90,12 +90,9 @@ export default async function ProfessionalsPage({ params }: { params: Promise<{ 
             <p className="lede">
               <T v={p.profileText} />
             </p>
-            <button type="button" className="btn btn--light" disabled aria-describedby="profile-note">
+            <a className="btn btn--light" href="/documents/ivory-smart-home-sample-profile.pdf" download>
               {p.profileCta}
-            </button>
-            <p id="profile-note" className={s.note}>
-              {c.ui.tbc}
-            </p>
+            </a>
           </div>
         </div>
       </section>

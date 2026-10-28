@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { SiteContent } from "@/content/types";
 import type { Locale } from "@/lib/i18n";
 import { href } from "@/lib/i18n";
@@ -24,6 +24,15 @@ export function SiteHeader({ locale, ui, nav, rooms, brandName, contact }: Props
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
 
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
   const other: Locale = locale === "en" ? "ar" : "en";
   const switchHref = pathname.replace(/^\/(en|ar)(?=\/|$)/, `/${other}`);
 
@@ -38,6 +47,19 @@ export function SiteHeader({ locale, ui, nav, rooms, brandName, contact }: Props
             <Logo title={brandName} />
           </Link>
           <nav className={styles.actions} aria-label="Primary">
+            <ul role="list" className={styles.desktopLinks}>
+              {nav.links.map((link) => {
+                const target = href(locale, link.path);
+                const active = pathname === target || pathname.startsWith(`${target}/`);
+                return (
+                  <li key={link.path}>
+                    <Link className={styles.navLink} href={target} aria-current={active ? "page" : undefined}>
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
             <Link className={styles.lang} href={switchHref} hrefLang={other} lang={other} aria-label={ui.switchLanguage}>
               <span aria-hidden="true" className={locale === "en" ? styles.current : undefined}>
                 EN

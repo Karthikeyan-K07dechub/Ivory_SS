@@ -129,10 +129,67 @@
   }
 }
 
+/* Laptop widths: fit the hero into shorter screens without changing the PC layout. */
+@media (min-width: 900px) and (max-width: 1599px) {
+  .hero {
+    --hero-top-space: clamp(0.75rem, 2svh, 1.25rem);
+    --hero-bottom-space: 3.5rem;
+  }
+
+  .heroGrid {
+    row-gap: 1.25rem;
+  }
+
+  .headline {
+    grid-column: 1 / span 6;
+    font-size: clamp(2rem, min(3.4vw, 7svh), 3.15rem);
+    max-width: 21ch;
+  }
+
+  .heroCopy {
+    grid-column: 1 / span 6;
+    gap: 0.9rem;
+  }
+
+  .subline {
+    font-size: clamp(1rem, 1.35vw, 1.125rem);
+    max-width: 36ch;
+  }
+
+  .ctas :global(.btn) {
+    min-height: 2.75rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .heroArt {
+    grid-column: 7 / -1;
+    height: min(52svh, 30rem);
+    top: -0.75rem;
+  }
+
+  .prompt {
+    bottom: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .promptLine {
+    height: 1.75rem;
+  }
+}
+
 @media (max-width: 899px) {
+  .hero {
+    min-height: auto;
+    --hero-top-space: 1.25rem;
+    --hero-bottom-space: 3.5rem;
+  }
+
   .heroGrid {
     grid-template-rows: auto auto auto;
-    row-gap: 1.75rem;
+    row-gap: 1.25rem;
+    min-height: 0;
+    align-content: start;
   }
   .headline {
     grid-column: 1 / -1;
@@ -141,6 +198,7 @@
     grid-column: 1 / -1;
     grid-row: 2;
     padding-bottom: 0;
+    gap: 1rem;
   }
   .heroArt {
     grid-column: 1 / -1;
@@ -149,6 +207,21 @@
     height: auto;
     max-height: none;
     aspect-ratio: 800 / 520;
+  }
+
+  .prompt {
+    bottom: 1rem;
+  }
+
+  .promptLabel {
+    position: relative;
+    top: 1rem;
+  }
+
+  .promptLine {
+    height: 1.75rem;
+    position: relative;
+    top: 1rem;
   }
 }
 
@@ -163,6 +236,10 @@
   position: relative;
   background: var(--scene-bg);
   color: var(--scene-fg);
+}
+
+.walkViewport {
+  container-type: inline-size;
 }
 
 .track {
@@ -342,6 +419,11 @@
   overflow: hidden;
 }
 
+.experience[data-mode="horizontal"] .walkViewport {
+  height: 100%;
+  overflow: hidden;
+}
+
 .experience[data-mode="horizontal"] .track {
   flex-direction: row;
   width: max-content;
@@ -350,7 +432,7 @@
 }
 
 .experience[data-mode="horizontal"] .intro {
-  width: 34vw;
+  width: 34cqw;
   height: 100%;
   padding: calc(var(--header-h) + 2rem) var(--margin) 3rem;
   background: transparent;
@@ -358,13 +440,9 @@
 }
 
 .experience[data-mode="horizontal"] .room {
-  width: 100vw;
+  width: 100cqw;
   height: 100%;
-  padding: calc(var(--header-h) + 2rem) var(--margin) 3rem calc(var(--margin) + 11rem);
-}
-
-[dir="rtl"] .experience[data-mode="horizontal"] .room {
-  padding: calc(var(--header-h) + 2rem) calc(var(--margin) + 11rem) 3rem var(--margin);
+  padding: calc(var(--header-h) + 2rem) var(--margin) 3rem;
 }
 
 .experience[data-mode="horizontal"] .roomText {
@@ -385,11 +463,10 @@
   transform: translateY(10px);
 }
 
-/* Keep the fixed timeline beside the content in the vertical desktop layout too. */
+/* The scrolling viewport starts after the timeline, including during transitions. */
 @media (min-width: 900px) {
-  .experience[data-mode="stack"] .intro,
-  .experience[data-mode="stack"] .room {
-    padding-inline-start: calc(var(--margin) + 11rem);
+  .walkViewport {
+    margin-inline-start: calc(var(--margin) + 11rem);
   }
 
   .experience[data-mode="stack"] .roomText {
@@ -402,13 +479,42 @@
 }
 
 @media (max-width: 899px) {
+  .intro {
+    padding-block: 2rem;
+    padding-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .intro + .room {
+    padding-top: 0;
+  }
+
+  .room {
+    padding-block: 2rem;
+    row-gap: 1rem;
+  }
+
+  .roomText {
+    gap: 0.85rem;
+  }
+
   .roomText,
   .roomArt {
     grid-column: 1 / -1;
   }
   .roomArt {
     order: -1;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    display: block;
+    min-width: 0;
+    max-height: none;
+  }
+
+  .roomArt svg {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 640 / 440;
   }
 }
 
@@ -418,5 +524,122 @@
   }
   .experience[data-mode="horizontal"] .roomArt {
     grid-column: 7 / -1;
+  }
+}
+
+/* Compact laptop scenes while retaining the horizontal walkthrough. */
+@media (min-width: 900px) and (max-width: 1599px) {
+  .walkViewport {
+    margin-inline-start: calc(var(--margin) + 9.5rem);
+    overflow: clip;
+  }
+
+  .intro {
+    padding-block: 3rem;
+    gap: 1rem;
+  }
+
+  .walkTitle {
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    max-width: 20ch;
+  }
+
+  .walkIntro {
+    font-size: 1.125rem;
+    max-width: 40ch;
+  }
+
+  .room {
+    padding-block: 3rem;
+  }
+
+  .experience[data-mode="stack"] .roomText {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+
+  .experience[data-mode="stack"] .roomArt {
+    grid-column: 8 / -1;
+    grid-row: 1;
+    align-self: start;
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    height: min(58svh, 24rem);
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .roomArt svg {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    transform: scale(1.1);
+    transform-origin: 50% 20%;
+  }
+
+  .time {
+    flex-wrap: wrap;
+  }
+
+  .time :global(.numeral) {
+    font-size: clamp(4rem, 7vw, 6.5rem);
+  }
+
+  .roomName {
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  }
+
+  .moment {
+    font-size: clamp(1.375rem, 2vw, 1.875rem);
+  }
+
+  .detail {
+    font-size: 1rem;
+  }
+
+  .chip {
+    font-size: 0.8125rem;
+  }
+
+  .experience[data-mode="horizontal"] .intro,
+  .experience[data-mode="horizontal"] .room {
+    padding-block: calc(var(--header-h) + 0.75rem) 1.25rem;
+  }
+
+  .experience[data-mode="horizontal"] .roomText {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+    min-width: 0;
+    gap: 0.6rem;
+  }
+
+  .experience[data-mode="horizontal"] .roomArt {
+    grid-column: 8 / -1;
+    grid-row: 1;
+    align-self: start;
+    height: min(58svh, 24rem);
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .experience[data-mode="horizontal"] .time :global(.numeral) {
+    font-size: clamp(3rem, min(6vw, 12svh), 5rem);
+  }
+
+  .experience[data-mode="horizontal"] .roomName {
+    font-size: clamp(1.5rem, 4.5svh, 2rem);
+  }
+
+  .experience[data-mode="horizontal"] .moment {
+    font-size: clamp(1.125rem, min(1.8vw, 4svh), 1.5rem);
+    max-width: 30ch;
+  }
+
+  .experience[data-mode="horizontal"] .detail {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    max-width: 48ch;
   }
 }

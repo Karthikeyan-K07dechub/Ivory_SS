@@ -7,7 +7,6 @@ import { T } from "@/components/T";
 import { ScenePlaceholder } from "@/components/ScenePlaceholder";
 import { SystemsGrid } from "@/components/SystemsGrid";
 import { Parallax } from "@/components/Parallax";
-import { RoomArt } from "@/components/rooms/RoomArt";
 import { MapPlaceholder } from "@/components/MapPlaceholder";
 import { HowWeWork } from "./HowWeWork";
 import { Testimonials } from "./Testimonials";
@@ -257,7 +256,7 @@ export function ProsSection({ locale, c }: P) {
   );
 }
 
-/* k. Final scene: the villa at night, every light warm */
+/* k. Final contact section */
 export function FinalScene({ locale, c }: P) {
   const f = c.home.final;
   const waMessage = c.ui.whatsappTemplate.replace("{topic}", c.ui.topics.home);
@@ -265,9 +264,6 @@ export function FinalScene({ locale, c }: P) {
     <section className={s.final} aria-labelledby="final-title">
       <LightZone light="night" />
       <div className={`wrap grid ${s.finalGrid}`}>
-        <div className={s.finalArt} aria-hidden="true">
-          <RoomArt room="night" active={false} uid="final-night" />
-        </div>
         <div className={s.finalText}>
           <h2 id="final-title" className={s.finalTitle} data-reveal>
             {f.title}

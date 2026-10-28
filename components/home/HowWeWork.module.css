@@ -101,7 +101,7 @@
   }
   .steps {
     grid-template-columns: 1fr;
-    row-gap: 2.5rem;
+    row-gap: 1.5rem;
   }
   .step {
     padding-top: 0;

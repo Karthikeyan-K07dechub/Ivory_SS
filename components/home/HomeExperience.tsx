@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { RoomContent, SiteContent, SystemSlug } from "@/content/types";
@@ -36,7 +36,9 @@ type Mode = "stack" | "horizontal";
 
 export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, systemNames, whatsappNumber }: Props) {
   const heroRef = useRef<HTMLElement>(null);
+  const heroSpacerRef = useRef<HTMLDivElement>(null);
   const walkRef = useRef<HTMLElement>(null);
+  const walkSpacerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
   const jumpRef = useRef<(i: number) => void>(() => {});
@@ -56,18 +58,19 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
   }, []);
 
   /* ---------- Scroll scenes ---------- */
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = document.documentElement;
     const heroEl = heroRef.current;
     const walkEl = walkRef.current;
+    const heroSpacer = heroSpacerRef.current;
+    const walkSpacer = walkSpacerRef.current;
     const track = trackRef.current;
-    if (!heroEl || !walkEl || !track) return;
+    if (!heroEl || !walkEl || !heroSpacer || !walkSpacer || !track) return;
     const rtl = document.documentElement.dir === "rtl";
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    gsap.set(root, LIGHTS.dawn);
-
     const ctx = gsap.context(() => {
+      gsap.set(root, LIGHTS.dawn);
       /* Hero: the doors open as you scroll, and you step toward the entrance. */
       if (!reduced) {
         const doorTl = gsap.timeline({
@@ -77,6 +80,7 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
             end: mode === "horizontal" ? "+=70%" : "bottom top",
             scrub: 0.6,
             pin: mode === "horizontal",
+            pinSpacer: heroSpacer,
           },
         });
         doorTl
@@ -91,7 +95,8 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
 
       if (mode === "horizontal") {
         /* Walkthrough: pinned horizontal scroll, light interpolates from dawn to night. */
-        const vw = () => window.innerWidth;
+        // Each room fills the content viewport beside the fixed timeline.
+        const vw = () => track.parentElement?.clientWidth ?? walkEl.clientWidth;
         const introW = () => introRef.current?.offsetWidth ?? 0;
         const dist = () => Math.max(0, track.scrollWidth - vw());
         const dir = rtl ? 1 : -1;
@@ -110,6 +115,7 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
           start: "top top",
           end: () => `+=${dist()}`,
           pin: true,
+          pinSpacer: walkSpacer,
           scrub: 0.5,
           invalidateOnRefresh: true,
           animation: gsap.to(track, { x: () => dir * dist(), ease: "none" }),
@@ -192,6 +198,8 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
 
     return () => {
       window.clearTimeout(t);
+      jumpRef.current = () => {};
+      // Restore pins before React updates or removes the section DOM.
       ctx.revert();
       clearLight();
     };
@@ -227,6 +235,7 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
   return (
     <div className={s.experience} data-mode={mode}>
       {/* a. Arrival */}
+      <div ref={heroSpacerRef}>
       <section ref={heroRef} className={s.hero} aria-labelledby="hero-title">
         <div className={`wrap ${s.heroGrid}`}>
           <h1 id="hero-title" className={s.headline}>
@@ -251,13 +260,16 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
           </div>
           <a className={s.prompt} href="#walkthrough">
             <span className={s.promptLine} aria-hidden="true" />
-            {hero.scrollPrompt}
+            <span className={s.promptLabel}>{hero.scrollPrompt}</span>
           </a>
         </div>
       </section>
+      </div>
 
       {/* b. The walkthrough */}
+      <div ref={walkSpacerRef}>
       <section id="walkthrough" ref={walkRef} className={s.walk} aria-labelledby="walk-title">
+        <div className={s.walkViewport}>
         <div ref={trackRef} className={s.track}>
           <div ref={introRef} className={s.intro}>
             <h2 id="walk-title" className={s.walkTitle}>
@@ -317,7 +329,9 @@ export function HomeExperience({ locale, brand, hero, walkthrough, ui, rooms, sy
             );
           })}
         </div>
+        </div>
       </section>
+      </div>
 
       <RoomIndicator
         rooms={rooms.map((r, i) => ({ id: r.id, name: r.name, time: r.time, label: roomLabel(i) }))}

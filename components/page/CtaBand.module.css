@@ -31,6 +31,18 @@
 }
 
 @media (max-width: 899px) {
+  .band {
+    padding-block: var(--section);
+  }
+
+  .grid {
+    row-gap: 1.25rem;
+  }
+
+  .body {
+    gap: 1.25rem;
+  }
+
   .title,
   .body {
     grid-column: 1 / -1;
