@@ -4,7 +4,7 @@ import s from "./HeroArt.module.css";
 export function HeroArt({ label }: { label: string }) {
   const diamonds = Array.from({ length: 34 }, (_, i) => 74 + i * 19.4);
   return (
-    <svg viewBox="0 0 800 520" className={s.art} role="img" aria-label={label} preserveAspectRatio="xMidYMax meet">
+    <svg viewBox="0 0 800 520" className={s.art} role="img" aria-label={label} preserveAspectRatio="xMidYMid meet">
       <defs>
         <radialGradient id="hero-pool" cx="50%" cy="0%" r="100%">
           <stop offset="0%" stopColor="var(--golden)" stopOpacity="0.9" />

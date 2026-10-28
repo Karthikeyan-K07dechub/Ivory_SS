@@ -4,7 +4,7 @@ import type { Light } from "@/content/types";
 export type LightState = Light | "ivory";
 
 export const LIGHTS: Record<LightState, Record<string, string>> = {
-  dawn: { "--scene-bg": "#DCE3E6", "--scene-fg": "#1C1F24", "--scene-line": "rgba(28,31,36,0.14)", "--glow": "#E9C894" },
+  dawn: { "--scene-bg": "#FFFFFF", "--scene-fg": "#1C1F24", "--scene-line": "rgba(28,31,36,0.14)", "--glow": "#E9C894" },
   noon: { "--scene-bg": "#FFF9EE", "--scene-fg": "#1C1F24", "--scene-line": "rgba(28,31,36,0.12)", "--glow": "#E9C894" },
   golden: { "--scene-bg": "#E9C894", "--scene-fg": "#1C1F24", "--scene-line": "rgba(28,31,36,0.18)", "--glow": "#FFF9EE" },
   dusk: { "--scene-bg": "#2A2622", "--scene-fg": "#FBF8F2", "--scene-line": "rgba(251,248,242,0.16)", "--glow": "#E9C894" },
